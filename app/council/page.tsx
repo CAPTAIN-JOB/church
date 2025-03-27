@@ -1,22 +1,33 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { CouncilMemberForm } from "@/components/council-member-form"
-import { CouncilMeetings } from "@/components/council-meetings"
-import { useQuery } from "convex/react"
-import { api } from "@/convex/_generated/api"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CouncilMemberForm } from "@/components/council-member-form";
+import { CouncilMeetings } from "@/components/council-meetings";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function CouncilPage() {
-  const councilMembers = useQuery(api.council.getCouncil)
+  //const councilMembers = useQuery(ap.council.getCouncil)
+  const councilMembers = useQuery(api.tables.council.getCouncil);
 
   return (
     <div className="container py-10 px-4 md:px-6">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
-          <h1 className="inline-block text-4xl font-bold tracking-tight lg:text-5xl">Church Council</h1>
-          <p className="text-xl text-muted-foreground">Meet our church leadership and learn about their work</p>
+          <h1 className="inline-block text-4xl font-bold tracking-tight lg:text-5xl">
+            Church Council
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            Meet our church leadership and learn about their work
+          </p>
         </div>
       </div>
 
@@ -44,7 +55,9 @@ export default function CouncilPage() {
           <Card>
             <CardHeader>
               <CardTitle>Council Meetings</CardTitle>
-              <CardDescription>Schedule and minutes from recent council meetings</CardDescription>
+              <CardDescription>
+                Schedule and minutes from recent council meetings
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <CouncilMeetings />
@@ -55,7 +68,9 @@ export default function CouncilPage() {
           <Card>
             <CardHeader>
               <CardTitle>Add Council Member</CardTitle>
-              <CardDescription>Add a new member to the church council directory</CardDescription>
+              <CardDescription>
+                Add a new member to the church council directory
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <CouncilMemberForm />
@@ -64,7 +79,7 @@ export default function CouncilPage() {
         </TabsContent>
       </Tabs>
     </div>
-  )
+  );
 }
 
 function CouncilMemberCard({
@@ -74,11 +89,11 @@ function CouncilMemberCard({
   bio,
   contact,
 }: {
-  name: string
-  role: string
-  image: string
-  bio: string
-  contact: string
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  contact: string;
 }) {
   return (
     <Card>
@@ -102,6 +117,5 @@ function CouncilMemberCard({
         <p className="text-sm text-muted-foreground">Contact: {contact}</p>
       </CardContent>
     </Card>
-  )
+  );
 }
-

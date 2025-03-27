@@ -18,4 +18,8 @@ export default defineSchema({
 		bio: v.string(),
 		addedAt: v.number(),
 	}),
+
+	events:defineTable({
+
+	})
 });
